@@ -8,6 +8,16 @@ font-family: ProximaNovaReg;
 src: url("../Assets/Font/ProximaNova-Reg.otf") format("opentype");
 }
 
+h1 {
+	color: #5e768e;
+	text-transform: uppercase;
+	font-family: ProximaNovaSbold, Comic Sans;
+	font-size: 10pt;
+	text-transform: uppercase;
+	letter-spacing: 0.25px;
+	word-spacing: 1px;
+}
+
 /* Top Bar */
 div#top-bar {	
 	width: 100%;
@@ -51,9 +61,9 @@ div.editor-section {
 
 div.editor-section-title {
 	width: 100%;
-	height: 31px;
+	height: 32px;
 	text-align: center;
-	line-height: 31px;
+	line-height: 32px;
 	font-family: ProximaNovaSbold, Comic Sans;
 	font-size: 10pt;
 	color: #9cb3ca;
@@ -78,14 +88,14 @@ div#templates-section {
 }
 
 div#elements-section {
-
+	background-color: #21313f;
 }
 
 div#settings-section {
 
 }
 
-/* Templates Section Objects */
+/* Templates Section */
 div.page-templates {
 	width: 171px;
 	margin: 0 auto;
@@ -208,4 +218,121 @@ div#add-new-page {
 }
 .page-template :-ms-input-placeholder {  
    color: #ffffff; 
+}
+
+/* Elements Selection */
+div.elements {
+	width: 100%;
+	height: 216px;
+	position: relative;
+	display: block;
+	background-color: #21313f;
+}
+
+div.element-button {
+	width: 117px;
+	height: 107px;
+	position: absolute;
+	background-color: #34485c;
+}
+
+div.element-button:hover {
+	background-color: #3c5065;
+}
+
+div.element-button.top {
+	top: 0px;
+}
+
+div.element-button.bottom {
+	top: 109px;
+}
+
+div.element-button.left {
+	left: 0px;
+}
+
+div.element-button.right {
+	width: 115px;
+	left: 119px;
+	border-left: 1px solid #3e5164;
+	background: #34485c; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI5MyUiIHN0b3AtY29sb3I9IiMzNDQ4NWMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMjgzNzQ2IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+	background: -moz-linear-gradient(left,  #34485c 93%, #283746 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(93%,#34485c), color-stop(100%,#283746)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #34485c 93%,#283746 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #34485c 93%,#283746 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #34485c 93%,#283746 100%); /* IE10+ */
+	background: linear-gradient(to right,  #34485c 93%,#283746 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34485c', endColorstr='#283746',GradientType=1 ); /* IE6-8 */
+}
+
+div.element-button.right:hover {
+	background: #3d5165; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI5MyUiIHN0b3AtY29sb3I9IiMzZDUxNjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMmYzZTRlIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+	background: -moz-linear-gradient(left,  #3d5165 93%, #2f3e4e 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(93%,#3d5165), color-stop(100%,#2f3e4e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #3d5165 93%,#2f3e4e 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #3d5165 93%,#2f3e4e 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #3d5165 93%,#2f3e4e 100%); /* IE10+ */
+	background: linear-gradient(to right,  #3d5165 93%,#2f3e4e 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d5165', endColorstr='#2f3e4e',GradientType=1 ); /* IE6-8 */
+}
+
+div.element-button.bottom.left {
+	height: 106px;
+	border-top: 1px solid #3e5164;
+}
+
+div.element-button.bottom.right {
+	height: 106px;
+	border-top: 1px solid #3e5164;
+}
+
+div.element-icon {
+	width: 52px;
+	height: 56px;
+	position: absolute;
+	top: 20px;
+	left: 32px;
+	background-image: url('../Assets/Sprites/Element-Icons.png');
+	background-repeat: no-repeat;
+	cursor: all-scroll;
+}
+
+div.element-label {
+	width: 100%;
+	position: absolute;
+	top: 83px;
+	text-align: center;
+}
+
+div.element-label.bottom {
+	top: 81px;
+}
+
+div.element-icon.right {
+	left: 31px;
+}
+
+div.element-icon.bottom {
+	top: 18px;
+}
+
+div#title-element {
+	background-position: -9px -8px;
+}
+
+div#text-element {
+	background-position: -63px -8px;
+}
+
+div#image-element {
+	background-position: -117px -8px;
+}
+
+div#nav-element {
+	background-position: -171px -8px;
 }
