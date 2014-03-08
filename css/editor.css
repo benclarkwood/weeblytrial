@@ -124,10 +124,12 @@ div.page-button-control {
 	position: absolute;
 	background-image: url('../Assets/Sprites/Add-Delete-Edit-Icons.png');
 	background-repeat: no-repeat;
+	display: none;
 }
 div.page-button-control.add {
 	left: 144px;
 	background-position: -13px -51px;
+	display: block;
 }
 div.page-button-control.add:hover {
 	background-position: -13px -13px;
@@ -206,7 +208,7 @@ div#add-new-page {
    color: #4f657b; 
 }
 
-/* Special styling for page template placeholder */
+/* Special styling for page button placeholder */
 .page-button ::-webkit-input-placeholder {
    color: #ffffff;
 }
