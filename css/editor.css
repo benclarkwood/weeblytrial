@@ -1,7 +1,11 @@
 /* Fonts */
 @font-face {
-font-family: ProximaNovaReg;
+font-family: ProximaNovaSbold;
 src: url("../Assets/Font/ProximaNova-Sbold.otf") format("opentype");
+}
+@font-face {
+font-family: ProximaNovaReg;
+src: url("../Assets/Font/ProximaNova-Reg.otf") format("opentype");
 }
 
 /* Top Bar */
@@ -21,26 +25,187 @@ div#top-bar-logo {
 	background-size: 100% 100%;
 }
 
+/* Left Pane */
 div#left-pane {
 	float: left;
 	width: 235px;
 	height: 100%;
-	background-color: #2c3e50;
 	border-top: 1px solid #2c3e50;
+	background: #2c3e50; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI5NyUiIHN0b3AtY29sb3I9IiMyYzNlNTAiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMjEyZjNkIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+	background: -moz-linear-gradient(left,  #2c3e50 97%, #212f3d 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(97%,#2c3e50), color-stop(100%,#212f3d)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #2c3e50 97%,#212f3d 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #2c3e50 97%,#212f3d 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #2c3e50 97%,#212f3d 100%); /* IE10+ */
+	background: linear-gradient(to right,  #2c3e50 97%,#212f3d 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c3e50', endColorstr='#212f3d',GradientType=1 ); /* IE6-8 */
 }
 
+/* Generic Left Pane Section */
 div.editor-section {
 	width: 100%;
+	border-bottom: 2px solid #1a2733;
 }
 
 div.editor-section-title {
 	width: 100%;
 	height: 31px;
-	background-color: #4f657b;
 	text-align: center;
 	line-height: 31px;
-	font-family: ProximaNovaReg, Comic Sans;
+	font-family: ProximaNovaSbold, Comic Sans;
 	font-size: 10pt;
 	color: #9cb3ca;
 	text-transform: uppercase;
+	border-bottom: 2px solid #1a2733;
+	background: #4f657b; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI5NiUiIHN0b3AtY29sb3I9IiM0ZjY1N2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjM2M0ZDVlIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+	background: -moz-linear-gradient(left,  #4f657b 97%, #3c4d5e 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(97%,#4f657b), color-stop(100%,#3c4d5e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #4f657b 97%,#3c4d5e 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #4f657b 97%,#3c4d5e 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #4f657b 97%,#3c4d5e 100%); /* IE10+ */
+	background: linear-gradient(to right,  #4f657b 97%,#3c4d5e 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f657b', endColorstr='#3c4d5e',GradientType=1 ); /* IE6-8 */
+
+}
+
+/* Specific Left Pane Sections */
+div#templates-section {
+	background-color: #2c3e50;
+}
+
+div#elements-section {
+
+}
+
+div#settings-section {
+
+}
+
+/* Templates Section Objects */
+div.page-templates {
+	width: 171px;
+	margin: 0 auto;
+	margin-top: 24px;
+	margin-bottom: 22px;
+}
+
+div.page-template {
+	width: 167px;
+	height: 30px;
+	background-color: #4f657b;
+	border: 1px solid #607487;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	position: relative;
+	-moz-box-shadow: 0px 2px #233240;
+	-webkit-box-shadow: 0px 2px #233240;
+	box-shadow: 0px 2px #233240;
+}
+
+/* Page template controls */
+div.page-template-control {
+	height: 14px;
+	width: 14px;
+	top: 8px;
+	position: absolute;
+	background-image: url('../Assets/Sprites/Add-Delete-Edit-Icons.png');
+	background-repeat: no-repeat;
+}
+div.page-template-control.add {
+	left: 144px;
+	background-position: -13px -51px;
+}
+div.page-template-control.add:hover {
+	background-position: -13px -13px;
+}
+
+div.page-template-control.delete {
+	left: 144px;
+	background-position: -54px -13px;
+}
+div.page-template-control.delete:hover {
+	background-position: -54px -32px;
+}
+
+div.page-template-control.edit {
+	left: 125px;
+	background-position: -34px -13px;
+}
+div.page-template-control.edit:hover {
+	background-position: -34px -32px;
+	
+}
+
+div #first-page-template {
+	background-color: #518dca;
+	border-color: #6198cf;
+}
+
+div#add-new-page {
+	background-color: #2c3e50;
+	border-color: #4f657b;
+	border-width: 2px;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+/* page template delete confirmation */
+.page-template.page-delete-confirm {
+	background-color: #d86a65;
+	border-color: #db7874;
+}
+
+/* page template tab inputs */
+.page-template input[type=text] {
+	border: none;
+	background: none;
+	height: 30px;
+	width: 106px;
+	position: absolute;
+	left: 14px;
+	font-family: ProximaNovaReg, Comic Sans;
+	font-size: 10pt;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	word-spacing: 1px;
+	color: #ffffff;
+}
+
+.page-template input[type=text]:focus {
+	border: none
+	background: none;
+	outline: none;
+}
+
+/* Special styling for add-new-page placeholder */
+#add-new-page ::-webkit-input-placeholder {
+   color: #4f657b;
+}
+#add-new-page :-moz-placeholder { /* Firefox 18- */
+   color: #4f657b;
+}
+#add-new-page ::-moz-placeholder {  /* Firefox 19+ */
+   color: #4f657b; 
+}
+#add-new-page :-ms-input-placeholder {  
+   color: #4f657b; 
+}
+
+/* Special styling for page template placeholder */
+.page-template ::-webkit-input-placeholder {
+   color: #ffffff;
+}
+.page-template :-moz-placeholder { /* Firefox 18- */
+   color: #ffffff;
+}
+.page-template ::-moz-placeholder {  /* Firefox 19+ */
+   color: #ffffff; 
+}
+.page-template :-ms-input-placeholder {  
+   color: #ffffff; 
 }
