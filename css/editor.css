@@ -92,7 +92,7 @@ div#elements-section {
 }
 
 div#settings-section {
-
+	border-bottom: none;
 }
 
 /* Templates Section */
@@ -335,4 +335,9 @@ div#image-element {
 
 div#nav-element {
 	background-position: -171px -8px;
+}
+
+/* Settings Section */
+div.settings {
+	
 }
