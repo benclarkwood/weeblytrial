@@ -3,6 +3,10 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<!-- Editor CSS. -->
 	<link rel="stylesheet" type="text/css" href="css/editor.css">
+	
+	<!-- JQuery -->
+	<script src="js/jquery-2.1.0.min.js"></script>
+	
 </head>
 <body>
 	<!-- Top Bar -->
@@ -14,22 +18,22 @@
 	<div id="left-pane">
 		<div class="editor-section">
 			<div class="editor-section-title">templates</div>
-			<div class="page-templates">
-				<div id="first-page-template" class="page-template">
-					<input class="page-template-title" type="text" readonly placeholder="page">
-					<div class="page-template-control delete"></div>
-					<div class="page-template-control edit"></div>
+			<div id="page-buttons">
+				<div id="first-page-button" class="page-button">
+					<input class="page-button-title" type="text" readonly placeholder="page">
+					<div class="page-button-control delete"></div>
+					<div class="page-button-control edit"></div>
 				</div>
-				<div class="page-template">
-					<input class="page-template-title" type="text" readonly placeholder="page">
+				<div class="page-button">
+					<input class="page-button-title" type="text" readonly placeholder="page">
 				</div>
-				<div class="page-template page-delete-confirm">
-					<input class="page-template-title" type="text" readonly placeholder="page">
-					<div class="page-template-control delete"></div>
+				<div class="page-button page-delete-confirm">
+					<input class="page-button-title" type="text" readonly placeholder="page">
+					<div class="page-button-control delete"></div>
 				</div>
-				<div id="add-new-page"class="page-template">
-					<input class="page-template-title" type="text" placeholder="add new page">
-					<div class="page-template-control add"></div>
+				<div id="add-new-page"class="page-button">
+					<input class="page-button-title" type="text" placeholder="add new page">
+					<div class="page-button-control add"></div>
 				</div>
 			</div>
 		</div>
@@ -56,6 +60,14 @@
 		</div>
 		<div id="settings-section" class="editor-section">
 			<div class="editor-section-title">settings</div>
+		</div>
+	</div>
+	
+	<div class="templates" style="display: none">
+		<div id="page-button-template" class="page-button">
+			<input class="page-button-title" type="text" readonly placeholder="">
+			<div class="page-button-control delete"></div>
+			<div class="page-button-control edit"></div>
 		</div>
 	</div>
 </body>

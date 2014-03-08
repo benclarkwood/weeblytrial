@@ -96,14 +96,14 @@ div#settings-section {
 }
 
 /* Templates Section */
-div.page-templates {
+div#page-buttons {
 	width: 171px;
 	margin: 0 auto;
 	margin-top: 24px;
 	margin-bottom: 22px;
 }
 
-div.page-template {
+div.page-button {
 	width: 167px;
 	height: 30px;
 	background-color: #4f657b;
@@ -117,7 +117,7 @@ div.page-template {
 }
 
 /* Page template controls */
-div.page-template-control {
+div.page-button-control {
 	height: 14px;
 	width: 14px;
 	top: 8px;
@@ -125,32 +125,32 @@ div.page-template-control {
 	background-image: url('../Assets/Sprites/Add-Delete-Edit-Icons.png');
 	background-repeat: no-repeat;
 }
-div.page-template-control.add {
+div.page-button-control.add {
 	left: 144px;
 	background-position: -13px -51px;
 }
-div.page-template-control.add:hover {
+div.page-button-control.add:hover {
 	background-position: -13px -13px;
 }
 
-div.page-template-control.delete {
+div.page-button-control.delete {
 	left: 144px;
 	background-position: -54px -13px;
 }
-div.page-template-control.delete:hover {
+div.page-button-control.delete:hover {
 	background-position: -54px -32px;
 }
 
-div.page-template-control.edit {
+div.page-button-control.edit {
 	left: 125px;
 	background-position: -34px -13px;
 }
-div.page-template-control.edit:hover {
+div.page-button-control.edit:hover {
 	background-position: -34px -32px;
 	
 }
 
-div #first-page-template {
+div #first-page-button {
 	background-color: #518dca;
 	border-color: #6198cf;
 }
@@ -165,13 +165,13 @@ div#add-new-page {
 }
 
 /* page template delete confirmation */
-.page-template.page-delete-confirm {
+.page-button.page-delete-confirm {
 	background-color: #d86a65;
 	border-color: #db7874;
 }
 
 /* page template tab inputs */
-.page-template input[type=text] {
+.page-button input[type=text] {
 	border: none;
 	background: none;
 	height: 30px;
@@ -186,7 +186,7 @@ div#add-new-page {
 	color: #ffffff;
 }
 
-.page-template input[type=text]:focus {
+.page-button input[type=text]:focus {
 	border: none
 	background: none;
 	outline: none;
@@ -207,16 +207,16 @@ div#add-new-page {
 }
 
 /* Special styling for page template placeholder */
-.page-template ::-webkit-input-placeholder {
+.page-button ::-webkit-input-placeholder {
    color: #ffffff;
 }
-.page-template :-moz-placeholder { /* Firefox 18- */
+.page-button :-moz-placeholder { /* Firefox 18- */
    color: #ffffff;
 }
-.page-template ::-moz-placeholder {  /* Firefox 19+ */
+.page-button ::-moz-placeholder {  /* Firefox 19+ */
    color: #ffffff; 
 }
-.page-template :-ms-input-placeholder {  
+.page-button :-ms-input-placeholder {  
    color: #ffffff; 
 }
 
