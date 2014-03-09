@@ -131,6 +131,9 @@ div.page-button-control.add {
 	background-position: -13px -51px;
 	display: block;
 }
+div.page-button-control.add.hovered {
+	background-position: -13px -13px;
+}
 div.page-button-control.add:hover {
 	background-position: -13px -13px;
 }
@@ -146,6 +149,9 @@ div.page-button-control.delete:hover {
 div.page-button-control.edit {
 	left: 125px;
 	background-position: -34px -13px;
+}
+div.page-button-control.editing {
+	background-position: -34px -32px;
 }
 div.page-button-control.edit:hover {
 	background-position: -34px -32px;
