@@ -189,6 +189,11 @@ div.page-button.delete.active > div.page-button-control.delete {
 	display: block;
 }
 
+/* If the page-button has the edit and active states, the delete control should stay visible, but not dark */
+div.page-button.edit.active > div.page-button-control.delete {
+	display: block;
+}
+
 div.page-button-control.delete:hover {
 	background-position: -54px -32px;
 }
@@ -202,6 +207,7 @@ div.page-button-control.edit {
 /* If the page button has the edit and active states, the white control should stay visible and white */
 div.page-button.edit.active > div.page-button-control.edit {
 	background-position: -34px -32px;
+	display: block;
 }
 
 /* If the page button as the delete and active states, the edit should not be visible */
@@ -243,6 +249,7 @@ div#add-new-page {
 	border: none
 	background: none;
 	outline: none;
+	color: #fff;
 }
 
 /* Special styling for add-new-page placeholder */
@@ -261,16 +268,16 @@ div#add-new-page {
 
 /* Special styling for page button placeholder */
 .page-button ::-webkit-input-placeholder {
-   color: #ffffff;
+   color: #96badf;
 }
 .page-button :-moz-placeholder { /* Firefox 18- */
-   color: #ffffff;
+   color: #96badf;
 }
 .page-button ::-moz-placeholder {  /* Firefox 19+ */
-   color: #ffffff; 
+   color: #96badf; 
 }
 .page-button :-ms-input-placeholder {  
-   color: #ffffff; 
+   color: #96badf; 
 }
 
 /* Elements Selection */

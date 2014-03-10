@@ -20,13 +20,6 @@ div#easel-line {
 }
 
 /* Page tabs */
-div#page-tabs {
-	height: 131px;
-	width: 817px;
-	position: relative;
-	margin-left: 73px;
-}
-
 div.page-tab {
 	width: 119px;
 	height: 36px;
@@ -62,7 +55,7 @@ div.page-tab.selected {
 /* Canvas */
 div#canvases {
 	width: 817px;
-	min-height: calc(100% - 131px);
+	height: 100%;
 	margin-left: 73px;
 }
 
@@ -86,6 +79,12 @@ div.canvas-element {
 	position: relative;
 	border: 2px solid #fff;
 	border-radius: 4px;
+}
+
+div.nav-element {
+	height: 131px;
+	width: 100%;
+	position: relative;
 }
 
 /* Image Element & Placeholder*/
