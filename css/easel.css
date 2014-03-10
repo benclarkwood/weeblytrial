@@ -1,0 +1,226 @@
+div#easel {
+	width: calc(100% - 235px);
+	min-height: 100%;
+	position: absolute;
+	top: 40px;
+	left: 235px;
+	border-top: 1px solid #404040;
+	border-top-left-radius: 3px;
+	background-color: #fff;
+	padding-bottom: 50px;
+}
+
+div#easel-line {
+	width: 100%;
+	height: 1px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: #bfbfbf;
+}
+
+/* Page tabs */
+div#page-tabs {
+	height: 131px;
+	width: 817px;
+	position: relative;
+	margin-left: 73px;
+}
+
+div.page-tab {
+	width: 119px;
+	height: 36px;
+	display: inline-block;
+	position: relative;
+	top: 41px;
+	margin-right: 9px;
+	border: 2px solid #97aabc;
+	border-radius: 4px;
+	text-align: center;
+	line-height: 38px;
+	color: #97aabc;
+	text-transform: uppercase;
+	font-family: ProximaNovaReg, Comic Sans;
+	letter-spacing: -.25px;
+	font-size: 11pt;
+	text-transform: uppercase;
+}
+
+div.page-tab:hover {
+	background-color: #97aabc;
+	border-color: #8498ac;
+	color: #fff;
+	cursor: pointer; 
+}
+
+div.page-tab.selected {
+	background-color: #97aabc;
+	border-color: #8498ac;
+	color: #fff;
+}
+
+/* Canvas */
+div#canvases {
+	width: 817px;
+	min-height: calc(100% - 131px);
+	margin-left: 73px;
+}
+
+div.canvas {
+	width: 100%;
+	min-height: 500px;
+	padding-bottom: 100px;
+	display: none;
+}
+
+div.canvas.active {
+	display: block;
+}
+
+h1:hover {
+	cursor: default;
+}
+
+/* Canvas Element Generic */
+div.canvas-element {
+	position: relative;
+	border: 2px solid #fff;
+	border-radius: 4px;
+}
+
+/* Image Element & Placeholder*/
+div.image-element {
+	margin-bottom: 41px;
+}
+
+div.image-element.placeholder {
+	height: 281px;
+	background-color: #eff2f5;
+	border-color: #c0ccd8;
+}
+
+div.image-element > div.image-default-placeholder {
+	width: 104px;
+	height: 127px;
+	position: relative;
+	top: calc(50% - 63.5px);
+	margin: 0 auto;
+}
+
+div.image-default-placeholder > div.default-image {
+	width: 100%;
+	height: 110px;
+	background-image: url('../Assets/Sprites/Image-Placeholder.png');
+	background-position: -16px -15px;
+}
+
+div.image-default-placeholder > div.label {
+	position: relative;
+	top: 7px;
+	text-align: left;
+	padding-left: 8px;
+}
+
+div.image-default-placeholder > div.label > h1 {
+	color: #c0ccd8;
+	font-family: ProximaNovaReg, Comic Sans;
+}
+
+div.large-plus {
+	position: absolute;
+	bottom: -4px;
+	right: 5px;
+	color: #c0ccd8;
+	font-size: 14pt;
+}
+
+/* Title Element & Placeholder */
+
+/* Title Element Font */
+h2 {
+	font-family: ProximaNovaSbold, Comic Sans;
+	font-size: 22pt;
+	word-spacing: 1px;
+	color: #4f657b;
+}
+
+div.title-element.placeholder {
+	height: 58px;
+}
+
+div.title-element > div.title > h2 {
+	position: relative;
+	top: 20px;
+}
+
+div.title-element > div.title {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+/* Text Element & Placeholder */
+div.text-element > p {
+	width:100%;
+	height:100%;
+	font-family: ProximaNovaLight, Comic Sans;
+	font-size: 10.5pt;
+	word-spacing: 5.5px;
+	color: #4f657b;
+	overflow: hidden;
+}
+
+/* Element Interaction Controls */
+div.canvas-element.selected {
+	border-color: #8fc7ff;
+}
+
+div.canvas-element.selected.delete {
+	border-color: #ef7a74;
+}
+
+div.canvas-element-control {
+	position: absolute;
+}
+
+div.canvas-element-control.resizer {
+	width: 6px;
+	height: 42px;
+	left: -4px;
+	top: calc(50% - 21px);
+	background-color: #8fc7ff;
+	border-radius: 2px;
+}
+
+div.canvas-element-control.resizer.right {
+	right: -4px;
+	left: auto;
+}
+
+div.canvas-element-control.resizer.bottom {
+	width: 42px;
+	height: 6px;
+	bottom: -4px;
+	top: auto;
+	left: calc(50% - 21px);
+}
+
+div.canvas-element-control.delete {
+	width: 38px;
+	height: 38px;
+	top: -2px;
+	right: -2px;
+	background-image: url('../Assets/Sprites/Delete-Element.png');
+	background-repeat: no-repeat;
+	background-position: -9px -10px;
+	display: none;
+}
+
+div.canvas-element.selected > div.canvas-element-control.delete {
+	display: block;
+}
+
+div.canvas-element.selected.delete > div.canvas-element-control.delete {
+	background-position: -52px -10px;
+
+}

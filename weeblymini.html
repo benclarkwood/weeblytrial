@@ -3,57 +3,75 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<!-- Editor CSS. -->
 	<link rel="stylesheet" type="text/css" href="css/editor.css">
+	<!-- Easel CSS -->
+	<link rel="stylesheet" type="text/css" href="css/easel.css">
 	
 	<!-- JQuery -->
 	<script src="js/jquery-2.1.0.min.js"></script>
 	
+	<!-- JQuery UI -->
+	<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.css"/>
 	<script src="js/editor.js"></script>
+	<script src="js/easel.js"></script>
 </head>
-<body>
+<body style="min-width:1200px">
 	<!-- Top Bar -->
 	<div id="top-bar">
 		<div id="top-bar-logo"></div>
 	</div>
 	
-	<!-- Left pane -->
-	<div id="left-pane">
-		<div class="editor-section">
-			<div class="editor-section-title">templates</div>
-			<div id="page-buttons">
-				<div id="first-page-button" class="page-button">
-					<input class="page-button-title" type="text" readonly value="page" placeholder="page">
-					<div class="page-button-control delete"></div>
-					<div class="page-button-control edit"></div>
-				</div>
-				<div id="add-new-page"class="page-button">
-					<input class="page-button-title" type="text" readonly placeholder="add new page">
-					<div class="page-button-control add"></div>
-				</div>
-			</div>
-		</div>
-		<div class="editor-section">
-			<div class="editor-section-title">elements</div>
-			<div class="elements">
-				<div class="element-button top left">
-					<div id="title-element" class="element-icon"></div>
-					<div class="element-label"><h1>title</h1></div>
-				</div>
-				<div class="element-button top right">
-					<div id="text-element" class="element-icon right"></div>
-					<div class="element-label"><h1>text</h1></div>
-				</div>
-				<div class="element-button bottom left">
-					<div id="image-element" class="element-icon bottom"></div>
-					<div class="element-label bottom"><h1>image</h1></div>
-				</div>
-				<div class="element-button bottom right">
-					<div id="nav-element" class="element-icon bottom right"></div>
-					<div class="element-label bottom"><h1>nav</h1></div>
+	<div id="all-panes">
+		<!-- Left pane -->
+		<div id="left-pane">
+			<div class="editor-section">
+				<div class="editor-section-title">templates</div>
+				<div id="page-buttons">
+					<div id="pagebutton-1" class="page-button canvas-visible">
+						<input class="page-button-title" type="text" readonly value="page" placeholder="page">
+						<div class="page-button-control delete"></div>
+						<div class="page-button-control edit"></div>
+					</div>
+					<div id="add-new-page"class="page-button">
+						<input class="page-button-title" type="text" readonly placeholder="add new page">
+						<div class="page-button-control add"></div>
+					</div>
 				</div>
 			</div>
+			<div class="editor-section">
+				<div class="editor-section-title">elements</div>
+				<div class="elements">
+					<div class="element-button top left">
+						<a id="title-element" class="element-icon"></a>
+						<div class="label"><h1>title</h1></div>
+					</div>
+					<div class="element-button top right">
+						<a id="text-element" class="element-icon right"></a>
+						<div class="label"><h1>text</h1></div>
+					</div>
+					<div class="element-button bottom left">
+						<a id="image-element" class="element-icon bottom"></a>
+						<div class="label bottom"><h1>image</h1></div>
+					</div>
+					<div class="element-button bottom right">
+						<a id="nav-element" class="element-icon bottom right"></a>
+						<div class="label bottom"><h1>nav</h1></div>
+					</div>
+				</div>
+			</div>
+			<div id="settings-section" class="editor-section">
+				<div class="editor-section-title">settings</div>
+			</div>
 		</div>
-		<div id="settings-section" class="editor-section">
-			<div class="editor-section-title">settings</div>
+		<!-- Easel (Right pane) -->
+		<div id="easel">
+			<div id="easel-line"></div>
+			<div id="page-tabs">
+				<div id="pagetab-1" class="page-tab selected">page</div>
+			</div>
+			<div id="canvases">
+				<div id="canvas-1" class="canvas active"></div>
+			</div>
 		</div>
 	</div>
 	
@@ -62,6 +80,32 @@
 			<input class="page-button-title" type="text" readonly placeholder="">
 			<div class="page-button-control delete"></div>
 			<div class="page-button-control edit"></div>
+		</div>
+		<div id="canvas-template" class="canvas">
+
+		</div>
+		<div id="page-tab-template" class="page-tab">page</div>
+		<div id="image-element-template" class="canvas-element image-element placeholder">
+			<div class="canvas-element-control delete"></div>
+			<div class="image-default-placeholder">
+				<div class="default-image"></div>
+				<div class="label"><h1>add image</h1></div>
+				<div class="large-plus">+</div>
+			</div>
+		</div>
+		<div id="text-element-template" class="canvas-element text-element placeholder">
+			<div class="canvas-element-control delete"></div>
+			<p>Cum sociis natoque penatibus et magnis dis parturient montes,
+			nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum
+			sociis natoque penatibus et magnis dis paturient montes, nascetur ridiculus mus. Praesent 
+			commodo cursus magna, vel scelerisque nisl consecetur et. Maecenas sed diam eget risus varius 
+			blandit sit amet non magna. Aenean lacinia bibendum nulla sed consecetetur. Cum sociis natoque 
+			penatibus et magnis dis parturient montes.
+			</p>
+		</div>
+		<div id="title-element-template" class="canvas-element title-element placeholder">
+			<div class="canvas-element-control delete"></div>
+			<h2>Add Title Here</h2>
 		</div>
 	</div>
 </body>

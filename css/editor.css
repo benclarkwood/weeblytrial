@@ -7,6 +7,11 @@ src: url("../Assets/Font/ProximaNova-Sbold.otf") format("opentype");
 font-family: ProximaNovaReg;
 src: url("../Assets/Font/ProximaNova-Reg.otf") format("opentype");
 }
+@font-face {
+font-family: ProximaNovaLight;
+src: url("../Assets/Font/ProximaNova-Light.otf") format("opentype");
+}
+
 
 h1 {
 	color: #5e768e;
@@ -22,7 +27,7 @@ h1 {
 div#top-bar {	
 	width: 100%;
 	height: 39px;
-	border-bottom: 2px solid #6198cf;
+	border-bottom: 1px solid #6198cf;
 	background-color: #518dca;
 }
 
@@ -35,11 +40,19 @@ div#top-bar-logo {
 	background-size: 100% 100%;
 }
 
+div#all-panes {
+	float: left;
+	width: 100%;
+}
+
 /* Left Pane */
 div#left-pane {
-	float: left;
+	position: absolute;
+	top: 40px;
+	left: 0px;
 	width: 235px;
-	height: 100%;
+	height: calc(100%);
+	margin-top: 1px;
 	border-top: 1px solid #2c3e50;
 	background: #2c3e50; /* Old browsers */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -67,6 +80,7 @@ div.editor-section-title {
 	font-family: ProximaNovaSbold, Comic Sans;
 	font-size: 10pt;
 	color: #9cb3ca;
+	cursor: default;
 	text-transform: uppercase;
 	border-bottom: 2px solid #1a2733;
 	background: #4f657b; /* Old browsers */
@@ -79,7 +93,6 @@ div.editor-section-title {
 	background: -ms-linear-gradient(left,  #4f657b 97%,#3c4d5e 100%); /* IE10+ */
 	background: linear-gradient(to right,  #4f657b 97%,#3c4d5e 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f657b', endColorstr='#3c4d5e',GradientType=1 ); /* IE6-8 */
-
 }
 
 /* Specific Left Pane Sections */
@@ -116,6 +129,16 @@ div.page-button {
 	box-shadow: 0px 2px #233240;
 }
 
+div.page-button.canvas-visible {
+	background-color: #518dca;
+	border-color: #6399cf;
+}
+
+div.page-button.delete {
+	background-color: #d86a65;
+	border-color: #db7874;
+}
+
 /* Page template controls */
 div.page-button-control {
 	height: 14px;
@@ -126,41 +149,69 @@ div.page-button-control {
 	background-repeat: no-repeat;
 	display: none;
 }
+
+/* If the page button is hovered then the page button controls should be displayed */
+div.page-button.hovered > div.page-button-control {
+	display: block;
+}
+
+/* add */
 div.page-button-control.add {
 	left: 144px;
 	background-position: -13px -51px;
 	display: block;
 }
-div.page-button-control.add.hovered {
-	background-position: -13px -13px;
-}
-div.page-button-control.add:hover {
+
+/* If the add new page button is hovered, the add control should highlight */
+div#add-new-page.hovered > div.page-button-control.add {
 	background-position: -13px -13px;
 }
 
+/* If the add new page button is active, the add control should dehighlight */
+div#add-new-page.active > div.page-button-control.add {
+	background-position: -13px -51px;
+}
+
+/* If the add new page button is active, the add control should highlight on hover */
+div#add-new-page.active > div.page-button-control.add:hover {
+	background-position: -13px -13px;
+}
+
+/* delete */
 div.page-button-control.delete {
 	left: 144px;
 	background-position: -54px -13px;
 }
+
+/* If the page-button has the delete and active states, the delete control should stay visible and white */
+div.page-button.delete.active > div.page-button-control.delete {
+	background-position: -54px -32px;
+	display: block;
+}
+
 div.page-button-control.delete:hover {
 	background-position: -54px -32px;
 }
 
+/* edit */
 div.page-button-control.edit {
 	left: 125px;
 	background-position: -34px -13px;
 }
-div.page-button-control.editing {
+
+/* If the page button has the edit and active states, the white control should stay visible and white */
+div.page-button.edit.active > div.page-button-control.edit {
 	background-position: -34px -32px;
 }
+
+/* If the page button as the delete and active states, the edit should not be visible */
+div.page-button.delete.active > div.page-button-control.edit {
+	display: none;
+}
+
 div.page-button-control.edit:hover {
 	background-position: -34px -32px;
 	
-}
-
-div #first-page-button {
-	background-color: #518dca;
-	border-color: #6198cf;
 }
 
 div#add-new-page {
@@ -170,12 +221,6 @@ div#add-new-page {
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
-}
-
-/* page template delete confirmation */
-.page-button.page-delete-confirm {
-	background-color: #d86a65;
-	border-color: #db7874;
 }
 
 /* page template tab inputs */
@@ -299,7 +344,7 @@ div.element-button.bottom.right {
 	border-top: 1px solid #3e5164;
 }
 
-div.element-icon {
+a.element-icon {
 	width: 52px;
 	height: 56px;
 	position: absolute;
@@ -310,39 +355,57 @@ div.element-icon {
 	cursor: all-scroll;
 }
 
-div.element-label {
+div.label {
 	width: 100%;
 	position: absolute;
 	top: 83px;
 	text-align: center;
 }
 
-div.element-label.bottom {
+div.label.bottom {
 	top: 81px;
 }
 
-div.element-icon.right {
+a.element-icon.right {
 	left: 31px;
 }
 
-div.element-icon.bottom {
+a.element-icon.bottom {
 	top: 18px;
 }
 
-div#title-element {
+a#title-element {
 	background-position: -9px -8px;
 }
 
-div#text-element {
+a#text-element {
 	background-position: -63px -8px;
 }
 
-div#image-element {
+a#image-element {
 	background-position: -117px -8px;
 }
 
-div#nav-element {
+a#nav-element {
 	background-position: -171px -8px;
+}
+
+a.element-icon:active {
+	top: 16px;
+	height: 54px;
+	border-radius: 4px;
+	-moz-box-shadow: 0px 2px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0px 2px rgba(0,0,0,0.3);
+	box-shadow: 0px 2px rgba(0,0,0,0.3);
+}
+
+a.element-icon.bottom:active {
+	top: 14px;
+}
+
+a.element-icon.ui-draggable-dragging:active {
+	box-shadow: none;
+	border: 1px solid rgba(0,0,0,0.1);
 }
 
 /* Settings Section */
