@@ -40,6 +40,35 @@ function startEditor() {
 	$("#site-grid-slider").click( function() {
 		siteGridSliderWasClicked();
 	});
+	
+	// Add keypress handler for the page button title editing (not add new button)
+	$(".page-button-title").not("#add-new-page-title").keypress( function(event) {
+		// Enter was hit
+		if (event.which == 13) {
+			pageButtonEditWasClicked($(this).parent().children(".edit"));
+		}
+	});
+	
+	// Add keypress handler for the page button title editing (not add new button)
+	$("#add-new-page-title").keypress( function(event) {
+		// Enter was hit
+		if (event.which == 13) {
+			var pageButtonInput = $("#add-new-page-title");
+			
+			// Validate the field
+			if (pageButtonInput.val().length > 0) {
+				addNewPageWithTitle(pageButtonInput.val());
+			
+				// Add back readonly to the input
+				pageButtonInput.attr('readonly', true);
+			} else {
+				// No title, refocus on input.
+				pageButtonInput.focus();
+			}
+			
+			addPageButtonWasClicked();
+		}
+	});
 }
 
 // Templates Section Methods
@@ -56,14 +85,29 @@ function pageButtonWasClicked(pageButton) {
 	// Check if this is the first click on the pageButton
 	if ($(pageButton).hasClass("canvas-visible")) {
 		// Not the first click
-	} else {
-		// Remove canvas-visible, active, delete and edit from all other page buttons
-		$(".page-button").not(pageButton).removeClass("canvas-visible active delete edit");
-		// Add it to this one
-		$(pageButton).addClass("canvas-visible");
 		
-		// Make the corresponding canvas visible
-		canvasWasChangedTo("canvas-" + numberFromIdString(pageButton.id));
+	} else {
+		var noEditsOpen = true;
+		
+		// Check to see if the canvas visible has an edit. If there is, do nothing, refocus the text field
+		if ($(".canvas-visible.edit").length > 0) {
+			noEditsOpen = false;
+			
+			// Refocus on open edit
+			$(".canvas-visible.edit").children(".page-button-title").focus();
+		}
+				
+		console.log(noEditsOpen);
+		
+		if (noEditsOpen) {
+			// Remove canvas-visible, active, delete and edit from all other page buttons
+			$(".page-button").not(pageButton).removeClass("canvas-visible active delete edit");
+			// Add it to this one
+			$(pageButton).addClass("canvas-visible");
+		
+			// Make the corresponding canvas visible
+			canvasWasChangedTo("canvas-" + numberFromIdString(pageButton.id));
+		}
 	}
 }
 
@@ -87,20 +131,34 @@ function pageButtonEditWasClicked(editControl) {
 			pageButtonTitle.focus();
 		}
 	} else {
-		// Remove active, edit and delete from all other page buttons
-		$(".page-button").removeClass("active edit delete");
+		var noEditsOpen = true;
 		
-		// First click. Add the edit active classes to the page button
-		$(editControl).parent().addClass("edit active");		
+		// Check to see if there is an edit in progress. If there is, do nothing, refocus the text field
+		if ($(".page-button.edit").length > 0) {
+			noEditsOpen = false;
+			
+			// Refocus on open edit
+			$(".page-button.edit").children(".page-button-title").focus();
+		}
+				
+		console.log(noEditsOpen);
 		
-		// Manipulate page button title 
-		var pageButtonTitle = $(editControl).parent().children(".page-button-title");
+		if (noEditsOpen) {
+			// Remove active, edit and delete from all other page buttons
+			$(".page-button").removeClass("active edit delete");
 		
-		// Make the page button title editable
-		pageButtonTitle.removeAttr('readonly');
+			// First click. Add the edit active classes to the page button
+			$(editControl).parent().addClass("edit active");		
 		
-		// Focus on the page button title
-		pageButtonTitle.focus().select();
+			// Manipulate page button title 
+			var pageButtonTitle = $(editControl).parent().children(".page-button-title");
+		
+			// Make the page button title editable
+			pageButtonTitle.removeAttr('readonly');
+		
+			// Focus on the page button title
+			pageButtonTitle.focus().select();
+		}
 	}
 }
 
@@ -148,37 +206,52 @@ function addPageButtonWasClicked() {
 	} else if (newPageButton.hasClass("active")) {
 		// Random click
 	} else {
-		// Remove active, delete and edit state from all page buttons
-		$(".page-button").removeClass("active delete edit");
+		var noEditsOpen = true;
 		
-		// First click. Add active state
-		newPageButton.addClass("active");
-		
-		// Remove readonly from the text input
-		var pageButtonInput = newPageButton.children(".page-button-title")
-		
-		pageButtonInput.removeAttr('readonly');
-		
-		// Focus on the text input
-		pageButtonInput.focus();
-		
-		// Add a click handler for the add control and for enter. Both to call 
-		// addNewPageWithTitle()
-		newPageButton.children(".add").click( function() {
-			// Check to see if the title has length. If so, call addNewPageWithTitle()
-			if (pageButtonInput.val().length > 0) {
-				addNewPageWithTitle(pageButtonInput.val());
+		// Check to see if there is an edit in progress. If there is, do nothing, refocus the text field
+		if ($(".page-button.edit").length > 0) {
+			noEditsOpen = false;
+			
+			// Refocus on open edit
+			$(".page-button.edit").children(".page-button-title").focus();
+		}
 				
-				// remove click handler
-				$(this).unbind("click");
+		console.log(noEditsOpen);
+		
+			if (noEditsOpen) {
+		
+			// Remove active, delete and edit state from all page buttons
+			$(".page-button").removeClass("active delete edit");
+		
+			// First click. Add active state
+			newPageButton.addClass("active");
+		
+			// Remove readonly from the text input
+			var pageButtonInput = newPageButton.children(".page-button-title")
+		
+			pageButtonInput.removeAttr('readonly');
+		
+			// Focus on the text input
+			pageButtonInput.focus();
+		
+			// Add a click handler for the add control and for enter. Both to call 
+			// addNewPageWithTitle()
+			newPageButton.children(".add").click( function() {
+				// Check to see if the title has length. If so, call addNewPageWithTitle()
+				if (pageButtonInput.val().length > 0) {
+					addNewPageWithTitle(pageButtonInput.val());
 				
-				// Add back readonly to the input
-				pageButtonInput.attr('readonly', true);
-			} else {
-				// No title, refocus on input.
-				pageButtonInput.focus();
-			}
-		});
+					// remove click handler
+					$(this).unbind("click");
+				
+					// Add back readonly to the input
+					pageButtonInput.attr('readonly', true);
+				} else {
+					// No title, refocus on input.
+					pageButtonInput.focus();
+				}
+			});
+		}
 	}
 }
 
@@ -244,25 +317,3 @@ function siteGridSliderWasClicked() {
 		$("#site-grid-slider").addClass("active");
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
