@@ -41,15 +41,31 @@ div#top-bar-logo {
 }
 
 div#all-panes {
+	width: 100%;
+	height: auto;
+}
+
+div#container-1 {
+	float: left;
+	position: relative;
+	overflow:hidden;
+}
+
+div#container-2 {
+	clear: left;
 	float: left;
 	width: 100%;
+	overflow: hidden;
 }
 
 /* Left Pane */
 div#left-pane {
 	position: relative;
+	display: inline-block;
+	float: left;
 	width: 235px;
-	height: 100%;
+	min-height: 100%;
+	height: auto;
 	margin-top: 1px;
 	border-top: 1px solid #2c3e50;
 	background: #2c3e50; /* Old browsers */

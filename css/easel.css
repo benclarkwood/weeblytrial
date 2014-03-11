@@ -1,9 +1,10 @@
 div#easel {
 	width: calc(100% - 235px);
 	min-height: 100%;
-	position: absolute;
-	top: 40px;
-	left: 235px;
+	height: auto;
+	position: relative;
+	display: inline-block;
+	float: left;
 	border-top: 1px solid #404040;
 	border-top-left-radius: 3px;
 	background-color: #fff;
@@ -54,7 +55,7 @@ div.page-tab.selected {
 /* Canvas */
 div#canvases {
 	width: 817px;
-	height: 100%;
+	height: auto;
 	margin-left: 73px;
 }
 
@@ -73,16 +74,28 @@ h1:hover {
 	cursor: default;
 }
 
+div.canvas > div.helper {
+	width: 100%;
+	height: 15px;
+	border-bottom: 5px dashed #8fc7ff;
+	display: none; 
+}
+
+div.canvas > div.helper.helping {
+	display: block;
+}
+
 /* Canvas Element Generic */
 div.canvas-element {
 	position: relative;
 	border: 2px solid #fff;
 	border-radius: 4px;
 	cursor: pointer;
+	margin: 20px 0px 20px 0px;
 }
 
 div.canvas-element.selected {
-	cursor: all-scroll;
+	cursor: default;
 }
 
 /* nav-element */
@@ -94,7 +107,7 @@ div.nav-element {
 
 /* Image Element & Placeholder*/
 div.image-element {
-	margin-bottom: 41px;
+
 }
 
 div.image-element.placeholder {
@@ -149,29 +162,32 @@ h2 {
 }
 
 div.title-element.placeholder {
-	height: 58px;
+	height: 56px;
+	width: 200px;
 }
 
-div.title-element > div.title > h2 {
-	position: relative;
-	top: 20px;
-}
-
-div.title-element > div.title {
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
+div.title-element > h2 {
+	position: absolute;
+	top: calc(50% - 14.5px);
 }
 
 /* Text Element & Placeholder */
-div.text-element > p {
+div.text-element {
+	height: 75px;
 	width:100%;
-	height:100%;
+}
+
+div.text-element > div.text-container {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+div.text-element > p {
 	font-family: ProximaNovaLight, Comic Sans;
 	font-size: 10.5pt;
 	word-spacing: 5.5px;
 	color: #4f657b;
-	overflow: hidden;
 }
 
 /* Element Interaction Controls */

@@ -1,4 +1,13 @@
 <head>
+	<!--[if gte IE 9]>
+  <style type="text/css">
+    .gradient {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+	
+	
 	<!-- JQuery -->
 	<script src="js/jquery-2.1.0.min.js"></script>
 	
@@ -24,9 +33,9 @@
 	
 	<div id="all-panes">
 		<!-- Left pane -->
-		<div id="left-pane">
-			<div class="editor-section">
-				<div class="editor-section-title">templates</div>
+		<div id="left-pane" class="gradient">
+			<div class="editor-section gradient">
+				<div class="editor-section-title gradient">templates</div>
 				<div id="page-buttons">
 					<div id="pagebutton-1" class="page-button canvas-visible">
 						<input class="page-button-title" type="text" readonly value="page" placeholder="page">
@@ -39,14 +48,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="editor-section">
+			<div class="editor-section gradient">
 				<div class="editor-section-title">elements</div>
 				<div class="elements">
 					<div class="element-button top left">
 						<a id="title-element" class="element-icon"></a>
 						<div class="label"><h1>title</h1></div>
 					</div>
-					<div class="element-button top right">
+					<div class="element-button top right gradient">
 						<a id="text-element" class="element-icon right"></a>
 						<div class="label"><h1>text</h1></div>
 					</div>
@@ -54,13 +63,13 @@
 						<a id="image-element" class="element-icon bottom"></a>
 						<div class="label bottom"><h1>image</h1></div>
 					</div>
-					<div class="element-button bottom right">
+					<div class="element-button bottom right gradient">
 						<a id="nav-element" class="element-icon bottom right"></a>
 						<div class="label bottom"><h1>nav</h1></div>
 					</div>
 				</div>
 			</div>
-			<div id="settings-section" class="editor-section">
+			<div id="settings-section" class="editor-section gradient">
 				<div class="editor-section-title">settings</div>
 				<div class="setting">
 					<div class="label">site grid</div>
@@ -73,7 +82,9 @@
 		<div id="easel">
 			<div id="easel-line"></div>
 			<div id="canvases">
-				<div id="canvas-1" class="canvas active"></div>
+				<div id="canvas-1" class="canvas active">
+					<div class="helper"></div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -85,7 +96,7 @@
 			<div class="page-button-control edit"></div>
 		</div>
 		<div id="canvas-template" class="canvas">
-
+			<div class="helper"></div>
 		</div>
 		<div id="page-tab-template" class="page-tab">page</div>
 		<div id="image-element-template" class="canvas-element image-element placeholder">
@@ -98,13 +109,15 @@
 		</div>
 		<div id="text-element-template" class="canvas-element text-element placeholder">
 			<div class="canvas-element-control delete"></div>
-			<p>Cum sociis natoque penatibus et magnis dis parturient montes,
-			nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum
-			sociis natoque penatibus et magnis dis paturient montes, nascetur ridiculus mus. Praesent 
-			commodo cursus magna, vel scelerisque nisl consecetur et. Maecenas sed diam eget risus varius 
-			blandit sit amet non magna. Aenean lacinia bibendum nulla sed consecetetur. Cum sociis natoque 
-			penatibus et magnis dis parturient montes.
-			</p>
+			<div class="text-container">
+				<p>Cum sociis natoque penatibus et magnis dis parturient montes,
+				nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum
+				sociis natoque penatibus et magnis dis paturient montes, nascetur ridiculus mus. Praesent 
+				commodo cursus magna, vel scelerisque nisl consecetur et. Maecenas sed diam eget risus varius 
+				blandit sit amet non magna. Aenean lacinia bibendum nulla sed consecetetur. Cum sociis natoque 
+				penatibus et magnis dis parturient montes.
+				</p>
+			</div>
 		</div>
 		<div id="title-element-template" class="canvas-element title-element placeholder">
 			<div class="canvas-element-control delete"></div>

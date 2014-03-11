@@ -17,8 +17,8 @@ function startEasel() {
 	});
 	
 	// Add click for all existing canvas elements
-	$(".canvas").click( function() {
-		canvasWasClicked(this)
+	$(".canvas").click( function(e) {
+		canvasWasClicked(this, e)
 	});
 	
 	// Make all existing canvas elements droppable
@@ -36,7 +36,16 @@ function startEasel() {
 		
 		var typeOfElement = ui.draggable.attr('id');
 		
+		// Remove the helper
+		$(".canvas.active").children(".helper").removeClass("helping");
+		
 		addNewElementofTypeToActiveCanvas(typeOfElement);
+	});
+	
+	// Bind the listener for elements being held over the canvas
+	$(".canvas").on( "dropover", function( event, ui ) {
+		// Show the helper
+		$(".canvas.active").children(".helper").addClass("helping");
 	});
 }
 
@@ -93,8 +102,23 @@ function startEasel() {
  }
 
 /* Routes clicks on canvas elements */
-function canvasWasClicked(canvas) {
+function canvasWasClicked(canvas, clickEvent) {
 	console.log("canvasWasClicked");
+	// Check if the canvas was really the target.
+	if (clickEvent.target == canvas) {
+		// Check for any selected elements
+		$(".canvas-element.selected").each( function() {
+			// The element is selected so it should be deselected.
+			
+			// Kill the resizable if it has one
+			if ($(this).resizable()) {
+				$(this).resizable("destroy");
+			}
+			
+			// Remove the classes active, selected, delete
+			$(this).removeClass("active selected delete");
+		});
+	}
 }
 
 /* Hides all canvases except that with id = canvasId */
@@ -144,13 +168,9 @@ function elementSelectionWasChangedTo(elementId) {
 	// Remove delete from the element
 	currentSelectedElement.removeClass("delete");
 	
-	// Destroy its resizable and draggable widgets
+	// Destroy its resizable widget
 	if (currentSelectedElement.resizable()) {
 		currentSelectedElement.resizable( "destroy" );
-	}
-	
-	if (currentSelectedElement.draggable()) {
-		currentSelectedElement.draggable( "destroy" );
 	}
 
 	// Select the new element
@@ -160,8 +180,8 @@ function elementSelectionWasChangedTo(elementId) {
 	
 	// Get the minimums for this object type
 	if ($("#" + elementId).hasClass("title-element")) {
-		var minW = 150;
-		var minH = 50;
+		var minW = 200;
+		var minH = 55;
 	} else if ($("#" + elementId).hasClass("nav-element")) {
 		var minW = 100;
 		var minH = 50;
@@ -173,10 +193,10 @@ function elementSelectionWasChangedTo(elementId) {
 		var minH = 50;
 	}
 	
-	$("#" + elementId).resizable({ handles: "n,e,s,w", containment: "parent", minWidth: minW, minHeight: minH });
-	
-	// Make the new item draggable
-	$("#" + elementId).draggable({ containment: "parent" });
+	$("#" + elementId).resizable({ handles: "e,s,w", containment: "parent", minWidth: minW, minHeight: minH, stop: function() {
+		// Canvas size may have changed. Size panes
+		sizePanes();
+	} });
 }
 
 /*
@@ -190,8 +210,11 @@ function addNewElementofTypeToActiveCanvas(type) {
 		// Otherwise directly call and append newElementOfType()
 		var newElement = newElementOfType(type);
 	
-		// Append the element to the active canvas
-		$(".canvas.active").append(newElement);
+		// Append the element to the active canvas before the helper
+		$(".canvas.active").children(".helper").before(newElement);
+		
+		// Canvas changing, size panes
+		sizePanes();
 	}
 }
 
@@ -231,8 +254,11 @@ function addNavElementToActiveCanvas() {
 		
 		navElement.children("." + idClass).addClass("selected");
 		
-		// Now append the nav Element to the canvas
-		$(".canvas.active").append(navElement);
+		// Append the element to the active canvas before the helper
+		$(".canvas.active").children(".helper").before(navElement);
+		
+		// Canvas changing, size panes
+		sizePanes();
 	} else {
 		alert("Sorry, you can only have one nav element.");
 	}
@@ -282,14 +308,14 @@ function deleteElementWasClicked(deleteControl) {
 	if ($(deleteControl).parent().hasClass("delete")) {
 		// This is the second delete click, so the element should be removed from the canvas.
 		$(deleteControl).parent().remove();
+		
+		// Canvas size changing. Resize panes
+		sizePanes();
 	} else {
 		// First click on delete. Remove resizable and then add confirm to delete control 
 		// and delete to element
 		$(deleteControl).parent().resizable( "destroy" );
-		
-		// Remove draggable
-		$(deleteControl).parent().draggable( "destroy" );
-		
+				
 		$(deleteControl).parent().addClass("delete");
 	}
 }
@@ -334,4 +360,15 @@ function numberFromIdString(id) {
 	var bits = id.split('-');
 	
 	return bits[1];
+}
+
+function sizePanes() {
+	var leftHeight = $("#left-pane").height();
+	var rightHeight = $("#easel").height();
+	
+	if (rightHeight > leftHeight) {
+		$("#left-pane").height(rightHeight);
+	} else if (leftHeight > rightHeight) {
+		$("#easel").height(leftHeight);
+	}
 }
