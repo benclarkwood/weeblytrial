@@ -144,9 +144,13 @@ function elementSelectionWasChangedTo(elementId) {
 	// Remove delete from the element
 	currentSelectedElement.removeClass("delete");
 	
-	// Destroy its resizable widget
+	// Destroy its resizable and draggable widgets
 	if (currentSelectedElement.resizable()) {
 		currentSelectedElement.resizable( "destroy" );
+	}
+	
+	if (currentSelectedElement.draggable()) {
+		currentSelectedElement.draggable( "destroy" );
 	}
 
 	// Select the new element
@@ -169,7 +173,10 @@ function elementSelectionWasChangedTo(elementId) {
 		var minH = 50;
 	}
 	
-	$("#" + elementId).resizable({ handles: "e, s, w", containment: "parent", minWidth: minW, minHeight: minH });
+	$("#" + elementId).resizable({ handles: "n,e,s,w", containment: "parent", minWidth: minW, minHeight: minH });
+	
+	// Make the new item draggable
+	$("#" + elementId).draggable({ containment: "parent" });
 }
 
 /*
@@ -279,6 +286,9 @@ function deleteElementWasClicked(deleteControl) {
 		// First click on delete. Remove resizable and then add confirm to delete control 
 		// and delete to element
 		$(deleteControl).parent().resizable( "destroy" );
+		
+		// Remove draggable
+		$(deleteControl).parent().draggable( "destroy" );
 		
 		$(deleteControl).parent().addClass("delete");
 	}

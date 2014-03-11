@@ -99,12 +99,15 @@
 	display: none;
 }
 .ui-resizable-n {
-	cursor: n-resize;
-	height: 7px;
-	width: 100%;
-	top: -5px;
-	left: 0;
+	width: 42px;
+	height: 6px;
+	top: -2px;
+	left: calc(50% - 21px);
+	background-color: #8fc7ff;
+	border-radius: 2px;
+	cursor: s-resize;
 }
+
 .ui-resizable-s {
 	width: 42px;
 	height: 6px;
@@ -117,7 +120,6 @@
 .ui-resizable-e {
 	width: 6px;
 	height: 42px;
-	left: -4px;
 	top: calc(50% - 21px);
 	background-color: #8fc7ff;
 	border-radius: 2px;

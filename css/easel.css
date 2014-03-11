@@ -7,7 +7,6 @@ div#easel {
 	border-top: 1px solid #404040;
 	border-top-left-radius: 3px;
 	background-color: #fff;
-	padding-bottom: 50px;
 }
 
 div#easel-line {
@@ -79,8 +78,14 @@ div.canvas-element {
 	position: relative;
 	border: 2px solid #fff;
 	border-radius: 4px;
+	cursor: pointer;
 }
 
+div.canvas-element.selected {
+	cursor: all-scroll;
+}
+
+/* nav-element */
 div.nav-element {
 	height: auto;
 	width: 100%;
@@ -223,4 +228,43 @@ div.canvas-element.selected > div.canvas-element-control.delete {
 div.canvas-element.selected.delete > div.canvas-element-control.delete {
 	background-position: -52px -10px;
 
+}
+
+// JQuery UI Overrides
+.ui-resizable-n {
+	width: 42px;
+	height: 6px;
+	top: -2px;
+	left: calc(50% - 21px);
+	background-color: #8fc7ff;
+	border-radius: 2px;
+	cursor: s-resize;
+}
+.ui-resizable-s {
+	width: 42px;
+	height: 6px;
+	bottom: -4px;
+	left: calc(50% - 21px);
+	background-color: #8fc7ff;
+	border-radius: 2px;
+	cursor: s-resize;
+}
+.ui-resizable-e {
+	width: 6px;
+	height: 42px;
+	top: calc(50% - 21px);
+	background-color: #8fc7ff;
+	border-radius: 2px;
+	right: -4px;
+	left: auto;
+	cursor: e-resize;
+}
+.ui-resizable-w {
+	width: 6px;
+	height: 42px;
+	left: -4px;
+	top: calc(50% - 21px);
+	background-color: #8fc7ff;
+	border-radius: 2px;
+	cursor: w-resize;
 }

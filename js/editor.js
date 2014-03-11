@@ -118,6 +118,9 @@ function pageButtonDeleteWasClicked(deleteControl) {
 		
 		// Delete the pagetab
 		$(deleteControl).parent().remove();
+		
+		// Size the panes
+		sizePanes();
 	} else {
 		// Remove active, edit and delete from all other page buttons
 		$(".page-button").removeClass("active edit delete");
