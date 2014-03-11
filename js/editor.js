@@ -35,6 +35,11 @@ function startEditor() {
 	$(".page-button").not("#add-new-page").click( function() {
 		pageButtonWasClicked(this);
 	});
+	
+	// Add click handler for the site grid toggle
+	$("#site-grid-slider").click( function() {
+		siteGridSliderWasClicked();
+	});
 }
 
 // Templates Section Methods
@@ -226,6 +231,16 @@ function draggableElements() {
 	});
 }
 
+/* 
+ * Settings Section Methods
+ */
+function siteGridSliderWasClicked() {
+	if ($("#site-grid-slider").hasClass("active")) {
+		$("#site-grid-slider").removeClass("active");
+	} else {
+		$("#site-grid-slider").addClass("active");
+	}
+}
 
 
 

@@ -227,7 +227,7 @@ function addNavElementToActiveCanvas() {
 		// Now append the nav Element to the canvas
 		$(".canvas.active").append(navElement);
 	} else {
-		alert("Already have nav");
+		alert("Sorry, you can only have one nav element.");
 	}
 }
 

@@ -129,6 +129,10 @@ div.page-button {
 	box-shadow: 0px 2px #233240;
 }
 
+div.page-button:hover {
+	cursor: pointer;
+}
+
 div.page-button.canvas-visible {
 	background-color: #518dca;
 	border-color: #6399cf;
@@ -243,6 +247,7 @@ div#add-new-page {
 	letter-spacing: 0.5px;
 	word-spacing: 1px;
 	color: #ffffff;
+	cursor: pointer;
 }
 
 .page-button input[type=text]:focus {
@@ -250,6 +255,7 @@ div#add-new-page {
 	background: none;
 	outline: none;
 	color: #fff;
+	cursor: text;
 }
 
 /* Special styling for add-new-page placeholder */
@@ -404,6 +410,7 @@ a.element-icon:active {
 	-moz-box-shadow: 0px 2px rgba(0,0,0,0.3);
 	-webkit-box-shadow: 0px 2px rgba(0,0,0,0.3);
 	box-shadow: 0px 2px rgba(0,0,0,0.3);
+	opacity: 0.7;
 }
 
 a.element-icon.bottom:active {
@@ -413,9 +420,59 @@ a.element-icon.bottom:active {
 a.element-icon.ui-draggable-dragging:active {
 	box-shadow: none;
 	border: 1px solid rgba(0,0,0,0.1);
+	opacity: 1;
 }
 
 /* Settings Section */
 div.settings {
 	
+}
+
+div.setting {
+	width: 100%;
+	height: 54px;
+	position: relative;
+	border-bottom: 1px solid #374859;
+}
+
+div.setting > div.line {
+	width: 100%;
+	height: 2px;
+	position: absolute;
+	bottom: 0px;
+	background-color: #21313f;
+}
+
+div.setting > div.label {
+	width: auto;
+	height: 54px;
+	position: absolute;
+	top: 0px;
+	left: 32px;
+	line-height: 54px;
+	font-family: ProximaNovaSbold, Comic Sans;
+	font-size: 10pt;
+	color: #5e768e;
+	cursor: default;
+	text-transform: uppercase;
+	letter-spacing: 0.4px
+}
+
+div#site-grid-slider {
+	width: 50px;
+	height: 21px;
+	position: absolute;
+	left: 153px;
+	top: 15px;
+	background-image: url('../Assets/Sprites/Toggle-Switch.png');
+	background-position: -6px -7px;
+}
+
+div#site-grid-slider:hover {
+	background-position: -6px -32px;
+	cursor: pointer;
+}
+
+div#site-grid-slider.active {
+	background-position: -6px -57px;
 }
