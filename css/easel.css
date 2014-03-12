@@ -1,7 +1,3 @@
-body {
-	overflow: hidden;
-}
-
 div#easel {
 	width: calc(100% - 235px);
 	height: 100%;
