@@ -1,15 +1,15 @@
 /* Fonts */
 @font-face {
 font-family: ProximaNovaSbold;
-src: url('../Assets/Font/ProximaNova-Sbold.eot?') format('eot'), url("../Assets/Font/ProximaNova-Sbold.otf") format("opentype");
+src: url('../Assets/Font/ProximaNova-Sbold.eot'), url("../Assets/Font/ProximaNova-Sbold.otf") format("opentype");
 }
 @font-face {
 font-family: ProximaNovaReg;
-src: url('../Assets/Font/ProximaNova-Reg.eot?') format('eot'), url("../Assets/Font/ProximaNova-Reg.otf") format("opentype");
+src: url('../Assets/Font/ProximaNova-Reg.eot'), url("../Assets/Font/ProximaNova-Reg.otf") format("opentype");
 }
 @font-face {
 font-family: ProximaNovaLight;
-src: url('../Assets/Font/ProximaNova-Light.eot?') format('eot'), url("../Assets/Font/ProximaNova-Light.otf") format("opentype");
+src: url('../Assets/Font/ProximaNova-Light.eot'), url("../Assets/Font/ProximaNova-Light.otf") format("opentype");
 }
 
 html {
@@ -273,7 +273,7 @@ div#add-new-page {
 }
 
 .page-button input[type=text]:focus {
-	border: none
+	border: none;
 	background: none;
 	outline: none;
 	color: #fff;
