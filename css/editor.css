@@ -12,6 +12,10 @@ font-family: ProximaNovaLight;
 src: url('../Assets/Font/ProximaNova-Light.eot?') format('eot'), url("../Assets/Font/ProximaNova-Light.otf") format("opentype");
 }
 
+html {
+	height: 100%;
+}
+
 body {
 	overflow: hidden;
 	height: 100%;
