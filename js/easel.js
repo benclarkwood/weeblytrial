@@ -21,31 +21,24 @@ function startEasel() {
 		canvasWasClicked(this, e)
 	});
 	
-	// Make all existing canvas elements droppable
-	$(".canvas").each( function() {
-		if (this.id === 'canvas-template') {
-		
-		} else {
-			$(this).droppable();
+	// Make the easel bin droppable.
+	$("#easel").droppable({ 
+		over: function(event, ui) {
+			// Over the canvas, add helper.
+			$(".canvas.active").children(".helper").addClass("helping");
+		}, out: function(event, ui) {
+			// Nothing dropped. Remove helper.
+			$(".canvas.active").children(".helper").removeClass("helping");
+		}, drop: function(event, ui) {
+			// Grab element type
+			var typeOfElement = ui.draggable.attr('id');
+
+			// Remove the helper
+			$(".canvas.active").children(".helper").removeClass("helping");
+
+			// Add the element to the active canvas.
+			addNewElementofTypeToActiveCanvas(typeOfElement);
 		}
-	});
-	
-	// Bind the listener for elements being dropped onto the canvas
-	$(".canvas").on( "drop", function( event, ui ) {
-		console.log("dropped");
-		
-		var typeOfElement = ui.draggable.attr('id');
-		
-		// Remove the helper
-		$(".canvas.active").children(".helper").removeClass("helping");
-		
-		addNewElementofTypeToActiveCanvas(typeOfElement);
-	});
-	
-	// Bind the listener for elements being held over the canvas
-	$(".canvas").on( "dropover", function( event, ui ) {
-		// Show the helper
-		$(".canvas.active").children(".helper").addClass("helping");
 	});
 }
 
@@ -53,34 +46,30 @@ function startEasel() {
  * Canvas methods 
  */
  
- function addNewCanvasWithTitle(canvasTitle) {
-  	newCanvasId = "canvas-" + canvasCounter;
+ // Add new canvas with the specified title.
+function addNewCanvasWithTitle(canvasTitle) {
+	newCanvasId = "canvas-" + canvasCounter;
  	 	
  	// Create the new canvas from the template
  	var newCanvas = $("#canvas-template").clone(true).removeAttr('id');
  	 	 	
  	newCanvas.attr('id', newCanvasId);
  	
- 	// Deep copy does not preserve droppable. Instantiate here instead.
- 	newCanvas.droppable();
- 	
- 	// Add both to their respective places in the easel.
+ 	// Add the canvas to the easel.
  	$("#canvases").append(newCanvas);
+ 	
+ 	
  }
  
- // Removes the canvas with the specified id
- function deleteCanvasWithId(canvasId) {
+// Removes the canvas with the specified id
+function deleteCanvasWithId(canvasId) {
  	var wasActiveCanvas = false;
- 	
- 	console.log($("#" + canvasId).hasClass("active"));
  	
  	// Check if the canvas was the active canvas
  	if ($("#" + canvasId).hasClass("active")) {
 		wasActiveCanvas = true;
  	}
- 	
- 	console.log("wasActiveCanvas = " + wasActiveCanvas)
- 	
+ 	 	
  	// Delete the canvas
  	$("#" + canvasId).remove();
  	
@@ -101,9 +90,8 @@ function startEasel() {
  	}
  }
 
-/* Routes clicks on canvas elements */
+// Routes clicks on canvas elements
 function canvasWasClicked(canvas, clickEvent) {
-	console.log("canvasWasClicked");
 	// Check if the canvas was really the target.
 	if (clickEvent.target == canvas) {
 		// Check for any selected elements
@@ -121,10 +109,8 @@ function canvasWasClicked(canvas, clickEvent) {
 	}
 }
 
-/* Hides all canvases except that with id = canvasId */
+// Hides all canvases except that with specified id
 function canvasWasChangedTo(canvasId) {
-	console.log("canvasWasChangedTo");
-	
 	// Hide all canvases except that with correct id
 	$(".canvas").each( function() {
 		if (this.id !== canvasId) {
@@ -139,10 +125,8 @@ function canvasWasChangedTo(canvasId) {
  * Element selection methods
  */
 
-/* Routes element clicks */
+// Routes element clicks
 function elementWasClicked(element) {
-	console.log("elementWasClicked");
-	
 	// Check if this element is selected
 	if ($(element).hasClass("selected")) {
 		// Nothing should change. Element already selected.
@@ -153,9 +137,8 @@ function elementWasClicked(element) {
 	}
 }
 
+// Changes selected element to specified element.
 function elementSelectionWasChangedTo(elementId) {
-	console.log("elementSelectionWasChangeTo");
-	
 	// Get current canvas
 	var canvas = $("#" + elementId).closest(".canvas");
 	
@@ -193,15 +176,14 @@ function elementSelectionWasChangedTo(elementId) {
 		var minH = 50;
 	}
 	
-	$("#" + elementId).resizable({ handles: "e,s,w", containment: "parent", minWidth: minW, minHeight: minH, stop: function() {
-		// Canvas size may have changed. Size panes
-		sizePanes();
-	} });
+	$("#" + elementId).resizable({ handles: "e,s,w", containment: "parent", minWidth: minW, minHeight: minH });
 }
 
 /*
  *	Element creation methods
  */
+ 
+// Adds element of specified type to active canvas
 function addNewElementofTypeToActiveCanvas(type) {
 	// If it is a nav-element, run addNavElementToActiveCanvas()
 	if (type === 'nav-element') {
@@ -212,16 +194,12 @@ function addNewElementofTypeToActiveCanvas(type) {
 	
 		// Append the element to the active canvas before the helper
 		$(".canvas.active").children(".helper").before(newElement);
-		
-		// Canvas changing, size panes
-		sizePanes();
 	}
 }
 
-/*
- *	This special method controls the creation of the singleton nav element 
- *  (singleton relative to each canvas)
- */
+// This special method controls the creation of the singleton nav element 
+// It auto-generates a page tab for every existing canvas
+// (singleton relative to each canvas)
 function addNavElementToActiveCanvas() {
 	// First check if the canvas already has a nav element. If it doesn't proceed.
 	if ($(".canvas.active").children(".nav-element").length == 0) {
@@ -256,14 +234,12 @@ function addNavElementToActiveCanvas() {
 		
 		// Append the element to the active canvas before the helper
 		$(".canvas.active").children(".helper").before(navElement);
-		
-		// Canvas changing, size panes
-		sizePanes();
 	} else {
 		alert("Sorry, you can only have one nav element.");
 	}
 }
 
+// Generates a new element of specified type.
 function newElementOfType(type) {
 	elementCounter += 1;
 	
@@ -281,10 +257,38 @@ function newElementOfType(type) {
 	return newElement;
 }
 
+/*
+ * Element removal methods 
+ */
+ 
+// Controls deletion of elements
+function deleteElementWasClicked(deleteControl) {
+	if ($(deleteControl).parent().hasClass("delete")) {
+		// This is the second delete click, so the element should be removed from the canvas.
+		$(deleteControl).parent().remove();
+		
+		// Canvas size changing. Resize panes
+	} else {
+		// First click on delete. Remove resizable and then add confirm to delete control 
+		// and delete to element
+		$(deleteControl).parent().resizable( "destroy" );
+				
+		$(deleteControl).parent().addClass("delete");
+	}
+}
+
+/* nav-element specific methods */
+
+// Remove specified canvas's tab from all nav elements
+function removeTabFromNavElements(canvasId) {
+	// Need to remove all corresponding tabs from any existing nav elements
+	$("#canvases").find(".nav-element").each( function() {
+		$(this).children(".pagetab-" + numberFromIdString(canvasId)).remove();
+	});
+}
+
+// Generate and return a new page tab with specified id and title
 function newPageTab(id, title) {
-	console.log("newPageTab");
-	console.log("id is: " + id + " title is: " + title);
-	
 	var newPageTab = $("#page-tab-template").clone().removeAttr('id');
 	
 	// Set the title of the page tab
@@ -301,37 +305,12 @@ function newPageTab(id, title) {
 	return newPageTab;	
 }
 
-/*
- * Element delete methods 
- */
-function deleteElementWasClicked(deleteControl) {
-	if ($(deleteControl).parent().hasClass("delete")) {
-		// This is the second delete click, so the element should be removed from the canvas.
-		$(deleteControl).parent().remove();
-		
-		// Canvas size changing. Resize panes
-		sizePanes();
-	} else {
-		// First click on delete. Remove resizable and then add confirm to delete control 
-		// and delete to element
-		$(deleteControl).parent().resizable( "destroy" );
-				
-		$(deleteControl).parent().addClass("delete");
-	}
-}
-
-/* nav-element methods */
-function removeTabFromNavElements(canvasId) {
-	// Need to remove all corresponding tabs from any existing nav elements
-	$("#canvases").find(".nav-element").each( function() {
-		$(this).children(".pagetab-" + numberFromIdString(canvasId)).remove();
-	});
-}
-
+// Update the title of the specified page tab
 function updatePageTabTitleForId(pageId, title) {
 	$("#canvases").find(".nav-element").children(".pagetab-" + numberFromIdString(pageId)).empty().append(title);
 }
 
+// Update all the nav elements with the new page tab
 function updateNavElementsWithNewPageTab(pageButtonId, title) {	
 	// Need to add new page tab for new page
 	$("#canvases").find(".nav-element").each( function() {		
@@ -340,8 +319,6 @@ function updateNavElementsWithNewPageTab(pageButtonId, title) {
 				
 		// Check to see if this is the canvas of this page tab. If it is, tab should be selected.
 		var canvasId = $(this).parent().attr('id');
-		
-		console.log("canvasId is: " + canvasId);
 		
 		canvasId = numberFromIdString(canvasId);
 		pageButtonId = numberFromIdString(pageButtonId);
@@ -362,6 +339,7 @@ function numberFromIdString(id) {
 	return bits[1];
 }
 
+// Sync the height of the 
 function sizePanes() {
 	var leftHeight = $("#left-pane").height();
 	var rightHeight = $("#easel").height();

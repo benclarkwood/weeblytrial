@@ -84,16 +84,6 @@ div#left-pane {
 div.editor-section {
 	width: 100%;
 	border-bottom: 2px solid #1a2733;
-	background: #2c3e50; /* Old browsers */
-	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI5NyUiIHN0b3AtY29sb3I9IiMyYzNlNTAiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMjEyZjNkIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
-	background: -moz-linear-gradient(left,  #2c3e50 96%, #212f3d 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(96%,#2c3e50), color-stop(100%,#212f3d)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left,  #2c3e50 96%,#212f3d 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left,  #2c3e50 96%,#212f3d 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left,  #2c3e50 96%,#212f3d 100%); /* IE10+ */
-	background: linear-gradient(to right,  #2c3e50 96%,#212f3d 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c3e50', endColorstr='#212f3d',GradientType=1 ); /* IE6-8 */
 }
 
 div.editor-section-title {
@@ -257,7 +247,7 @@ div#add-new-page {
 	box-shadow: none;
 }
 
-/* page template tab inputs */
+/* page button inputs */
 .page-button input[type=text] {
 	border: none;
 	background: none;
@@ -281,6 +271,12 @@ div#add-new-page {
 	color: #fff;
 	cursor: text;
 }
+
+/* Override for ie10 and ie11 clear "x" */
+.page-button input[type=text]::-ms-clear {
+	display: none;
+}
+
 
 /* Special styling for add-new-page placeholder */
 #add-new-page ::-webkit-input-placeholder {
@@ -499,12 +495,4 @@ div#site-grid-slider:hover {
 
 div#site-grid-slider.active {
 	background-position: -6px -57px;
-}
-
-/*CSS for serving the retina image to devices with a high "device-pixel-ratio":*/
-@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
-    div#site-grid-slider {
-        background-image: url(../Assets/Sprites/Toggle-Switch@2X.png);
-        background-size: 62px 86px;
-    }
 }

@@ -96,9 +96,7 @@ function pageButtonWasClicked(pageButton) {
 			// Refocus on open edit
 			$(".canvas-visible.edit").children(".page-button-title").focus();
 		}
-				
-		console.log(noEditsOpen);
-		
+						
 		if (noEditsOpen) {
 			// Remove canvas-visible, active, delete and edit from all other page buttons
 			$(".page-button").not(pageButton).removeClass("canvas-visible active delete edit");
@@ -140,8 +138,6 @@ function pageButtonEditWasClicked(editControl) {
 			// Refocus on open edit
 			$(".page-button.edit").children(".page-button-title").focus();
 		}
-				
-		console.log(noEditsOpen);
 		
 		if (noEditsOpen) {
 			// Remove active, edit and delete from all other page buttons
@@ -176,9 +172,6 @@ function pageButtonDeleteWasClicked(deleteControl) {
 		
 		// Delete the pagetab
 		$(deleteControl).parent().remove();
-		
-		// Size the panes
-		sizePanes();
 	} else {
 		// Remove active, edit and delete from all other page buttons
 		$(".page-button").removeClass("active edit delete");
@@ -191,8 +184,6 @@ function pageButtonDeleteWasClicked(deleteControl) {
 /* Add New Page Button Methods */
 
 function addPageButtonWasClicked() {
-	console.log("addPageButtonWasClicked");
-	
 	// Grab add new page button.
 	var newPageButton = $("#add-new-page");
 	
@@ -204,7 +195,7 @@ function addPageButtonWasClicked() {
 		newPageButton.removeClass("hovered");
 		newPageButton.removeClass("active second");
 	} else if (newPageButton.hasClass("active")) {
-		// Random click
+		// Random click. Ignore.
 	} else {
 		var noEditsOpen = true;
 		
@@ -214,11 +205,9 @@ function addPageButtonWasClicked() {
 			
 			// Refocus on open edit
 			$(".page-button.edit").children(".page-button-title").focus();
-		}
-				
-		console.log(noEditsOpen);
-		
-			if (noEditsOpen) {
+		}		
+			
+		if (noEditsOpen) {
 		
 			// Remove active, delete and edit state from all page buttons
 			$(".page-button").removeClass("active delete edit");
@@ -274,8 +263,6 @@ function addNewPageWithTitle(title) {
 	// Set the value of the text input to the title
 	newPageButton.children(".page-button-title").val(title);
 	
-	console.log("newPageId: " + newPageId);
-	
 	// Clear the add new page title
 	$("#add-new-page").children(".page-button-title").val("");
 	
@@ -289,6 +276,12 @@ function addNewPageWithTitle(title) {
 	
 	// Update any existing nav elements
 	updateNavElementsWithNewPageTab(newPageId, title);
+	
+	// If there aren't any active canvases, this new page should be the active one.
+	if ($("#canvases").children(".active").length == 0) {
+		$("#canvas-" + canvasCounter).addClass("active");
+		newPageButton.addClass("canvas-visible");
+	}
 }
 
 // Elements Section Methods
