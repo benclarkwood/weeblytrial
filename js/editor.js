@@ -36,9 +36,9 @@ function startEditor() {
 		pageButtonWasClicked(this);
 	});
 	
-	// Add click handler for the site grid toggle
-	$("#site-grid-slider").click( function() {
-		siteGridSliderWasClicked();
+	// Add click handler for settings
+	$(".setting-control").click( function() {
+		settingControlWasClicked(this);
 	});
 	
 	// Add keypress handler for the page button title editing (not add new button)
@@ -71,7 +71,9 @@ function startEditor() {
 	});
 }
 
-// Templates Section Methods
+/* Templates Section Methods */
+
+// Controls styling of hovered page button
 function pageButtonHover() {
 	$(".page-button").hover( function() {
 		// check if this is the add page button
@@ -81,6 +83,7 @@ function pageButtonHover() {
 	});
 }
 
+// Routes clicks on specified page button
 function pageButtonWasClicked(pageButton) {
 	// Check if this is the first click on the pageButton
 	if ($(pageButton).hasClass("canvas-visible")) {
@@ -110,6 +113,8 @@ function pageButtonWasClicked(pageButton) {
 }
 
 /* Edit control methods */
+
+// Routes clicks on page button edit controls
 function pageButtonEditWasClicked(editControl) {
 	if ($(editControl).parent().hasClass("edit")) {
 		var pageButtonTitle = $(editControl).parent().children(".page-button-title");
@@ -159,6 +164,8 @@ function pageButtonEditWasClicked(editControl) {
 }
 
 /* Delete Control Methods */
+
+// Routes clicks on page button delete controls
 function pageButtonDeleteWasClicked(deleteControl) {
 	// Check if this is the first or second delete
 	if ($(deleteControl).parent().hasClass("delete")) {
@@ -183,6 +190,7 @@ function pageButtonDeleteWasClicked(deleteControl) {
 
 /* Add New Page Button Methods */
 
+// Route clicks on the add page button
 function addPageButtonWasClicked() {
 	// Grab add new page button.
 	var newPageButton = $("#add-new-page");
@@ -244,6 +252,7 @@ function addPageButtonWasClicked() {
 	}
 }
 
+// Add new page with specified title.
 function addNewPageWithTitle(title) {
 	// Increment canvas count
 	canvasCounter += 1;
@@ -303,10 +312,22 @@ function draggableElements() {
 /* 
  * Settings Section Methods
  */
-function siteGridSliderWasClicked() {
-	if ($("#site-grid-slider").hasClass("active")) {
-		$("#site-grid-slider").removeClass("active");
+ 
+ // Route clicks on setting controls
+function settingControlWasClicked(control) {
+	if ($(control).hasClass("active")) {
+		$(control).removeClass("active");
+		
+		if (control.id == 'site-grid-toggle') {
+			// See if there is an active ui-resizable, and reset the grid to [ 1, 1 ]
+			$(".canvas-element.ui-resizable").resizable( "option", "grid", [ 1, 1 ] );
+		}
 	} else {
-		$("#site-grid-slider").addClass("active");
+		$(control).addClass("active");
+		
+		if (control.id == 'site-grid-toggle') {
+			// See if there is an active ui-resizable, and reset the grid to [ 20, 20 ]
+			$(".canvas-element.ui-resizable").resizable( "option", "grid", [ 20, 20 ] );
+		}
 	}
 }

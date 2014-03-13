@@ -486,7 +486,7 @@ div.setting > div.label {
 	letter-spacing: 0.4px
 }
 
-div#site-grid-slider {
+div#site-grid-toggle {
 	width: 50px;
 	height: 21px;
 	position: absolute;
@@ -496,11 +496,11 @@ div#site-grid-slider {
 	background-position: -6px -7px;
 }
 
-div#site-grid-slider:hover {
+div#site-grid-toggle:hover {
 	background-position: -6px -32px;
 	cursor: pointer;
 }
 
-div#site-grid-slider.active {
+div#site-grid-toggle.active {
 	background-position: -6px -57px;
 }

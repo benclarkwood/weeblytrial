@@ -177,6 +177,11 @@ function elementSelectionWasChangedTo(elementId) {
 	}
 	
 	$("#" + elementId).resizable({ handles: "e,s,w", containment: "parent", minWidth: minW, minHeight: minH });
+	
+	// If the site grid toggle is active, make the resizable snap to grid
+	if ($("#site-grid-toggle").hasClass("active")) {
+		$("#" + elementId).resizable( "option", "grid", [ 20, 20 ] );
+	}
 }
 
 /*
