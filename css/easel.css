@@ -184,7 +184,7 @@ div.text-element > div.text-container {
 	height: 100%;
 }
 
-div.text-element > p {
+div.text-container > p {
 	font-family: ProximaNovaLight, Comic Sans;
 	font-size: 10.5pt;
 	word-spacing: 5.5px;
